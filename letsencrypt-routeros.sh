@@ -1,5 +1,5 @@
 #!/bin/bash
-CONFIG_FILE=letsencrypt-routeros.settings
+CONFIG_FILE=/opt/letsencrypt/letsencrypt-routeros.settings
 
 if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z $4 ]] || [[ -z $5 ]]; then
         echo -e "Usage: $0 or $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain]\n"
@@ -18,7 +18,7 @@ if [[ -z $ROUTEROS_USER ]] || [[ -z $ROUTEROS_HOST ]] || [[ -z $ROUTEROS_SSH_POR
         exit 1
 fi
 
-CERTIFICATE=/etc/letsencrypt/live/$DOMAIN/cert.pem
+CERTIFICATE=/etc/letsencrypt/live/$DOMAIN/fullchain.pem
 KEY=/etc/letsencrypt/live/$DOMAIN/privkey.pem
 
 #Create alias for RouterOS command
@@ -50,6 +50,8 @@ fi
 
 # Remove previous certificate
 $routeros /certificate remove [find name=$DOMAIN.pem_0]
+$routeros /certificate remove [find name=$DOMAIN.pem_1]
+$routeros /certificate remove [find name=$DOMAIN.pem_2]
 
 # Create Certificate
 # Delete Certificate file if the file exist on RouterOS
