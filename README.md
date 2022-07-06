@@ -72,15 +72,14 @@ scp -P $ROUTEROS_SSH_PORT /opt/letsencrypt-routeros/id_rsa.pub "$ROUTEROS_USER"@
 ```
 
 ### CertBot Let's Encrypt
-Install CertBot using official manuals https://certbot.eff.org/#ubuntuxenial-other
+Install CertBot using official manuals https://certbot.eff.org/instructions
 
-*for Ubuntu 16.04*
+*for Ubuntu 20.04*
 ```sh
-apt update
-apt install software-properties-common -y
-add-apt-repository ppa:certbot/certbot
-apt update
-apt install certbot -y
+install snapd
+sudo snap install core; sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
 ***In the first time, you will need to create Certificates manually and put domain TXT record***
