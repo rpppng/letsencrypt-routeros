@@ -17,7 +17,7 @@
 * Change **SSTP Server Settings** to use new certificate
 * Delete certificate and key files form RouterOS / Mikrotik storage
 
-### Installation on Ubuntu 16.04
+### Installation on Ubuntu 20.04
 *Similar way you can use on Debian/CentOS/AMI Linux/Arch/Others*
 
 Download the repo to your system
@@ -33,7 +33,7 @@ vim /opt/letsencrypt-routeros/letsencrypt-routeros.settings
 | Variable Name | Value | Description |
 | ------ | ------ | ------ |
 | ROUTEROS_USER | admin | user with admin rights to connect to RouterOS |
-| ROUTEROS_HOST | 10.0.254.254 | RouterOS\Mikrotik IP |
+| ROUTEROS_HOST | 10.10.10.1 | RouterOS\Mikrotik IP |
 | ROUTEROS_SSH_PORT | 22 | RouterOS\Mikrotik PORT |
 | ROUTEROS_PRIVATE_KEY | /opt/letsencrypt-routeros/id_rsa | Private Key to connecto to RouterOS |
 | DOMAIN | mydomain.com | Use main domain for wildcard certificate or subdomain for subdomain certificate |
