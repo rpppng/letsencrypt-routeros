@@ -88,7 +88,7 @@ apt install certbot -y
 *follow CertBot instructions*
 ```sh
 source /opt/letsencrypt-routeros/letsencrypt-routeros.settings
-certbot certonly --preferred-challenges=dns --manual -d $DOMAIN --manual-public-ip-logging-ok
+certbot certonly --standalone -d $DOMAIN --post-hook /opt/letsencrypt-routeros/letsencrypt-routeros.sh
 ```
 
 ### Usage of the script
