@@ -48,6 +48,9 @@ if [ ! -f $CERTIFICATE ] && [ ! -f $KEY ]; then
         exit 1
 fi
 
+# Remove NAT Rule for certbot
+$routeros /ip firewall nat remove [find comment=certbot-ACME-delete]
+
 # Remove previous certificate
 $routeros /certificate remove [find name=$DOMAIN.pem_0]
 $routeros /certificate remove [find name=$DOMAIN.pem_1]
