@@ -7,3 +7,4 @@ ROUTEROS_HOST=10.10.10.1
 ROUTEROS_SSH_PORT=22
 ROUTEROS_PRIVATE_KEY=/opt/letsencrypt-routeros/id_rsa
 DOMAIN=mydomain.com
+MACHINE_IP=10.10.10.100
