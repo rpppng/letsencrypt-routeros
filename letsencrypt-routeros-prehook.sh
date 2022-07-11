@@ -45,6 +45,6 @@ if [ ! -f $CERTIFICATE ] && [ ! -f $KEY ]; then
 fi
 
 # add NAT rule
-$routeros /ip firewall nat add chain=dstnat dst-port=80 protocol=tcp in-interface-list=WAN comment=certbot-ACME-delete to-addresses=10.7.2.13 action=dst-nat place-before=0
+$routeros /ip firewall nat add chain=dstnat dst-port=80 protocol=tcp in-interface-list=WAN comment=certbot-ACME-delete to-addresses=$MACHINE_IP action=dst-nat place-before=0
 
 exit 0
