@@ -37,6 +37,7 @@ vim /opt/letsencrypt-routeros/letsencrypt-routeros.settings
 | ROUTEROS_SSH_PORT | 22 | RouterOS\Mikrotik PORT |
 | ROUTEROS_PRIVATE_KEY | /opt/letsencrypt-routeros/id_rsa | Private Key to connecto to RouterOS |
 | DOMAIN | mydomain.com | Use main domain for wildcard certificate or subdomain for subdomain certificate |
+| MACHINE_IP | 10.10.10.100 | IP address of your dedicated linux PC for NAT rule to pass Let's Encrypt check |
 
 
 Change permissions:
