@@ -82,12 +82,12 @@ sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
-***In the first time, you will need to create Certificates manually and put domain TXT record***
+***To use script with CertBot hooks:***
 
 *follow CertBot instructions*
 ```sh
 source /opt/letsencrypt-routeros/letsencrypt-routeros.settings
-certbot certonly --standalone -d $DOMAIN --post-hook /opt/letsencrypt-routeros/letsencrypt-routeros.sh
+certbot certonly --standalone -d $DOMAIN --pre-hook /opt/letsencrypt-routeros/letsencrypt-routeros-prehook.sh --post-hook /opt/letsencrypt-routeros/letsencrypt-routeros.sh
 ```
 
 ### Usage of the script
@@ -103,18 +103,6 @@ certbot certonly --standalone -d $DOMAIN --post-hook /opt/letsencrypt-routeros/l
 *To use script with CertBot hooks for wildcard domain:*
 ```sh
 certbot certonly --preferred-challenges=dns --manual -d *.$DOMAIN --manual-public-ip-logging-ok --post-hook /opt/letsencrypt-routeros/letsencrypt-routeros.sh --server https://acme-v02.api.letsencrypt.org/directory
-```
-*To use script with CertBot hooks for subdomain:*
-```sh
-certbot certonly --preferred-challenges=dns --manual -d $DOMAIN --manual-public-ip-logging-ok --post-hook /opt/letsencrypt-routeros/letsencrypt-routeros.sh
-```
-
-### Edit Script
-You can easily edit script to execute your commands on RouterOS / Mikrotik after certificates renewal
-Add these strings in the «.sh» file before «exit 0» to have www-ssl and api-ssl works with Let's Encrypt SSL
-```sh
-$routeros /ip service set www-ssl certificate=$DOMAIN.pem_0
-$routeros /ip service set api-ssl certificate=$DOMAIN.pem_0
 ```
 ---
 ### Licence MIT
