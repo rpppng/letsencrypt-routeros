@@ -1,9 +1,6 @@
 # Let's Encrypt RouterOS / Mikrotik
 **Let's Encrypt certificates for RouterOS / Mikrotik**
 
-*UPD 2022-07-21: Second Release*
-*UPD 2022-07-11: First Release*
-
 [![Mikrotik](https://i.mt.lv/mtv2/logo.svg)](https://mikrotik.com/)
 
 
