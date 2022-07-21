@@ -24,7 +24,7 @@ routeros="ssh -i $ROUTEROS_PRIVATE_KEY $ROUTEROS_USER@$ROUTEROS_HOST -p $ROUTERO
 #Check connection to RouterOS
 $routeros /system resource print
 RESULT=$?
-
+if [[ ! $RESULT == 0 ]]; then
         echo -e "\nError in: $routeros"
         echo "More info: https://wiki.mikrotik.com/wiki/Use_SSH_to_execute_commands_(DSA_key_login)"
         exit 1
