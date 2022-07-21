@@ -78,7 +78,7 @@ Install CertBot using official manuals https://certbot.eff.org/instructions
 
 *for Ubuntu 20.04*
 ```sh
-install snapd
+apt install snapd
 sudo snap install core; sudo snap refresh core
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
