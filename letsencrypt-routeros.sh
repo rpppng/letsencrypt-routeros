@@ -1,5 +1,5 @@
 #!/bin/bash
-CONFIG_FILE=/opt/letsencrypt/letsencrypt-routeros.settings
+CONFIG_FILE=/opt/letsencrypt-routeros/letsencrypt-routeros.settings
 
 if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z $4 ]] || [[ -z $5 ]]; then
         echo -e "Usage: $0 or $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain]\n"
