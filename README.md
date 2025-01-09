@@ -87,7 +87,7 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot
 *follow CertBot instructions*
 ```sh
 source /opt/letsencrypt-routeros/letsencrypt-routeros.settings
-certbot certonly --standalone -d $DOMAIN --pre-hook /opt/letsencrypt-routeros/letsencrypt-routeros-prehook.sh --post-hook /opt/letsencrypt-routeros/letsencrypt-routeros.sh
+certbot certonly --key-type rsa --standalone -d $DOMAIN --pre-hook /opt/letsencrypt-routeros/letsencrypt-routeros-prehook.sh --post-hook /opt/letsencrypt-routeros/letsencrypt-routeros.sh
 ```
 
 ### Usage of the script
