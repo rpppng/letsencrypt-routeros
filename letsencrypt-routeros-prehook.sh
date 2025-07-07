@@ -19,7 +19,7 @@ if [[ -z $ROUTEROS_USER ]] || [[ -z $ROUTEROS_HOST ]] || [[ -z $ROUTEROS_SSH_POR
 fi
 
 #Create alias for RouterOS command
-routeros="ssh -i $ROUTEROS_PRIVATE_KEY $ROUTEROS_USER@$ROUTEROS_HOST -p $ROUTEROS_SSH_PORT"
+routeros="ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i $ROUTEROS_PRIVATE_KEY $ROUTEROS_USER@$ROUTEROS_HOST -p $ROUTEROS_SSH_PORT"
 
 #Check connection to RouterOS
 $routeros /system resource print
