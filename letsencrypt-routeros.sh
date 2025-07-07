@@ -22,7 +22,7 @@ CERTIFICATE=/etc/letsencrypt/live/$DOMAIN/fullchain.pem
 KEY=/etc/letsencrypt/live/$DOMAIN/privkey.pem
 
 #Create alias for RouterOS command
-routeros="ssh -i $ROUTEROS_PRIVATE_KEY $ROUTEROS_USER@$ROUTEROS_HOST -p $ROUTEROS_SSH_PORT"
+routeros="ssh -o PubkeyAcceptedKeyTypes=ssh-rsa -i $ROUTEROS_PRIVATE_KEY $ROUTEROS_USER@$ROUTEROS_HOST -p $ROUTEROS_SSH_PORT"
 
 #Check connection to RouterOS
 $routeros /system resource print
@@ -60,7 +60,7 @@ $routeros /certificate remove [find name=$DOMAIN.pem_2]
 # Delete Certificate file if the file exist on RouterOS
 $routeros /file remove $DOMAIN.pem > /dev/null
 # Upload Certificate to RouterOS
-scp -q -P $ROUTEROS_SSH_PORT -i "$ROUTEROS_PRIVATE_KEY" "$CERTIFICATE" "$ROUTEROS_USER"@"$ROUTEROS_HOST":"$DOMAIN.pem"
+scp -o PubkeyAcceptedKeyTypes=ssh-rsa -q -P $ROUTEROS_SSH_PORT -i "$ROUTEROS_PRIVATE_KEY" "$CERTIFICATE" "$ROUTEROS_USER"@"$ROUTEROS_HOST":"$DOMAIN.pem"
 sleep 2
 # Import Certificate file
 $routeros /certificate import file-name=$DOMAIN.pem passphrase=\"\"
@@ -71,7 +71,7 @@ $routeros /file remove $DOMAIN.pem
 # Delete Certificate file if the file exist on RouterOS
 $routeros /file remove $KEY.key > /dev/null
 # Upload Key to RouterOS
-scp -q -P $ROUTEROS_SSH_PORT -i "$ROUTEROS_PRIVATE_KEY" "$KEY" "$ROUTEROS_USER"@"$ROUTEROS_HOST":"$DOMAIN.key"
+scp -o PubkeyAcceptedKeyTypes=ssh-rsa -q -P $ROUTEROS_SSH_PORT -i "$ROUTEROS_PRIVATE_KEY" "$KEY" "$ROUTEROS_USER"@"$ROUTEROS_HOST":"$DOMAIN.key"
 sleep 2
 # Import Key file
 $routeros /certificate import file-name=$DOMAIN.key passphrase=\"\"
